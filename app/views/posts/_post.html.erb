@@ -1,0 +1,21 @@
+<div class="post">
+  <div class="post-author">
+    <div class="avatar avatar-<%= rand(1..27) %>"></div>
+    <div><%= post.user.username %></div>
+  </div>
+  <div class="post-body">
+    <span><%= post.body %></span>
+  </div>
+  <div class="post-actions">
+    <%= turbo_frame_tag "post-likes" do %>
+      <%= button_to "", post_likes_path(post), params: {likeable_type: 'Post'}, class: "post-actions-like" %>
+    <% end %>
+    <div class="post-actions-comments" id="post-comments-count"><%= pluralize(post.comments.count, "comment") %></div>
+  </div>
+  <div class="post-comments">
+    <div id="comment-form"><%= render partial: "comments/form", locals: { post: post } %></div>
+    <div id="post-comments-list">
+      <%= render partial: "comments/list", locals: { post: post } %>
+    </div>
+  </div>
+</div>

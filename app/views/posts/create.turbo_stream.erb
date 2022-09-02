@@ -1,0 +1,3 @@
+<%= turbo_stream.prepend "posts" do %>
+  <%= render partial: "post", locals: { post: @post } %>
+<% end %>
