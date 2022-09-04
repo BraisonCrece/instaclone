@@ -7,7 +7,7 @@
     <span><%= post.body %></span>
   </div>
   <div class="post-actions">
-    <%= turbo_frame_tag "post-likes" do %>
+    <%= turbo_frame_tag "post-like-#{post.id}" do %>
       <%= button_to "", post_likes_path(post), params: {likeable_type: 'Post'}, class: "post-actions-like" %>
     <% end %>
     <div class="post-actions-comments" id="post-comments-count"><%= pluralize(post.comments.count, "comment") %></div>

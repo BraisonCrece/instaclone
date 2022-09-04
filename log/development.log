@@ -11055,3 +11055,983 @@ Processing by LikesController#create as TURBO_STREAM
 Completed 200 OK in 17ms (Views: 0.8ms | ActiveRecord: 2.2ms | Allocations: 5426)
 
 
+Started GET "/" for ::1 at 2022-09-04 21:35:19 +0200
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SiteController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering site/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/site/index.html.erb:4
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:4
+  [1m[36mComment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:13
+  Rendered comments/_form.html.erb (Duration: 2.0ms | Allocations: 2402)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  ↳ app/views/comments/_list.html.erb:1
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/comments/_list.html.erb:7
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/comments/_list.html.erb:7
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/comments/_list.html.erb:7
+  Rendered comments/_list.html.erb (Duration: 3.6ms | Allocations: 7202)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 20.0ms | Allocations: 24506)
+  Rendered site/index.html.erb within layouts/application (Duration: 25.0ms | Allocations: 29019)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:15
+  Rendered layout layouts/application.html.erb (Duration: 82.7ms | Allocations: 77225)
+Completed 200 OK in 92ms (Views: 83.0ms | ActiveRecord: 1.3ms | Allocations: 83334)
+
+
+Started POST "/posts/1/comments/1/likes" for ::1 at 2022-09-04 21:35:21 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"1", "comment_id"=>"1"}
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.1ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 0.9ms | Allocations: 1060)
+Completed 200 OK in 12ms (Views: 1.6ms | ActiveRecord: 2.0ms | Allocations: 12114)
+
+
+Started POST "/posts/1/comments/2/likes" for ::1 at 2022-09-04 21:35:22 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"1", "comment_id"=>"2"}
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mComment Load (0.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.1ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 2]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 1.3ms | Allocations: 698)
+Completed 200 OK in 8ms (Views: 1.6ms | ActiveRecord: 1.9ms | Allocations: 5746)
+
+
+Started POST "/posts/1/comments/3/likes" for ::1 at 2022-09-04 21:35:23 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"1", "comment_id"=>"3"}
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mComment Load (0.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.1ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 3]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 0.6ms | Allocations: 698)
+Completed 200 OK in 6ms (Views: 0.9ms | ActiveRecord: 1.8ms | Allocations: 5455)
+
+
+Started POST "/posts/1/likes" for ::1 at 2022-09-04 21:35:26 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Post", "post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:4:in `create'
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.1ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Post"], ["likeable_id", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 0.5ms | Allocations: 698)
+Completed 200 OK in 7ms (Views: 0.9ms | ActiveRecord: 1.8ms | Allocations: 6887)
+
+
+Started DELETE "/posts/1/likes" for ::1 at 2022-09-04 21:35:27 +0200
+Processing by LikesController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Post", "post_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:13:in `destroy'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 8], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:13:in `destroy'
+  [1m[36mLike Delete All (1.7ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = ? AND "likes"."likeable_id" = ?[0m  [["user_id", 8], ["likeable_type", "Post"], ["likeable_id", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+  Rendering likes/destroy.html.erb
+  Rendered likes/destroy.html.erb (Duration: 1.1ms | Allocations: 815)
+Completed 200 OK in 8ms (Views: 1.4ms | ActiveRecord: 2.0ms | Allocations: 4155)
+
+
+Started POST "/posts/1/likes" for ::1 at 2022-09-04 21:35:28 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Post", "post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:4:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.2ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Post"], ["likeable_id", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 0.5ms | Allocations: 697)
+Completed 200 OK in 10ms (Views: 0.7ms | ActiveRecord: 2.1ms | Allocations: 5425)
+
+
+Started DELETE "/posts/1/likes" for ::1 at 2022-09-04 21:35:28 +0200
+Processing by LikesController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Post", "post_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:13:in `destroy'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 8], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:13:in `destroy'
+  [1m[36mLike Delete All (1.8ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = ? AND "likes"."likeable_id" = ?[0m  [["user_id", 8], ["likeable_type", "Post"], ["likeable_id", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+  Rendering likes/destroy.html.erb
+  Rendered likes/destroy.html.erb (Duration: 0.8ms | Allocations: 601)
+Completed 200 OK in 8ms (Views: 1.2ms | ActiveRecord: 2.0ms | Allocations: 3161)
+
+
+Started GET "/" for ::1 at 2022-09-04 21:39:00 +0200
+Processing by SiteController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering site/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/site/index.html.erb:4
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:4
+  [1m[36mComment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:13
+  Rendered comments/_form.html.erb (Duration: 1.0ms | Allocations: 526)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  ↳ app/views/comments/_list.html.erb:1
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/comments/_list.html.erb:7
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/comments/_list.html.erb:7
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/comments/_list.html.erb:7
+  Rendered comments/_list.html.erb (Duration: 14.0ms | Allocations: 3797)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 20.6ms | Allocations: 7080)
+  Rendered site/index.html.erb within layouts/application (Duration: 22.5ms | Allocations: 8087)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:15
+  Rendered layout layouts/application.html.erb (Duration: 56.9ms | Allocations: 14728)
+Completed 200 OK in 59ms (Views: 57.9ms | ActiveRecord: 0.5ms | Allocations: 15587)
+
+
+Started POST "/posts/1/comments/1/likes" for ::1 at 2022-09-04 21:39:01 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"1", "comment_id"=>"1"}
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mComment Load (0.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.1ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 0.9ms | Allocations: 1043)
+Completed 200 OK in 7ms (Views: 1.6ms | ActiveRecord: 1.8ms | Allocations: 6223)
+
+
+Started DELETE "/posts/8/comments/1/likes" for ::1 at 2022-09-04 21:39:02 +0200
+Processing by LikesController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"8", "comment_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = ? AND "comments"."id" = ? LIMIT ?[0m  [["user_id", 8], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mLike Delete All (1.9ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = ? AND "likes"."likeable_id" = ?[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 1]]
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  Rendering likes/destroy.html.erb
+  Rendered likes/destroy.html.erb (Duration: 0.8ms | Allocations: 816)
+Completed 200 OK in 8ms (Views: 1.0ms | ActiveRecord: 2.1ms | Allocations: 4230)
+
+
+Started POST "/posts/1/comments/2/likes" for ::1 at 2022-09-04 21:39:03 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"1", "comment_id"=>"2"}
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.2ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 2]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 0.5ms | Allocations: 697)
+Completed 200 OK in 11ms (Views: 0.7ms | ActiveRecord: 2.4ms | Allocations: 5469)
+
+
+Started DELETE "/posts/8/comments/2/likes" for ::1 at 2022-09-04 21:39:04 +0200
+Processing by LikesController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"8", "comment_id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = ? AND "comments"."id" = ? LIMIT ?[0m  [["user_id", 8], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mLike Delete All (2.0ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = ? AND "likes"."likeable_id" = ?[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 2]]
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  Rendering likes/destroy.html.erb
+  Rendered likes/destroy.html.erb (Duration: 0.5ms | Allocations: 601)
+Completed 200 OK in 8ms (Views: 0.8ms | ActiveRecord: 2.1ms | Allocations: 3170)
+
+
+Started POST "/posts/1/comments/3/likes" for ::1 at 2022-09-04 21:39:04 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"1", "comment_id"=>"3"}
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.2ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 3]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 0.6ms | Allocations: 697)
+Completed 200 OK in 9ms (Views: 0.9ms | ActiveRecord: 2.0ms | Allocations: 5430)
+
+
+Started DELETE "/posts/8/comments/3/likes" for ::1 at 2022-09-04 21:39:05 +0200
+Processing by LikesController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"8", "comment_id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = ? AND "comments"."id" = ? LIMIT ?[0m  [["user_id", 8], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mLike Delete All (2.0ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = ? AND "likes"."likeable_id" = ?[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 3]]
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  Rendering likes/destroy.html.erb
+  Rendered likes/destroy.html.erb (Duration: 0.5ms | Allocations: 601)
+Completed 200 OK in 8ms (Views: 0.7ms | ActiveRecord: 2.2ms | Allocations: 3169)
+
+
+Started GET "/" for ::1 at 2022-09-04 21:39:10 +0200
+Processing by SiteController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering site/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/site/index.html.erb:4
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:4
+  [1m[36mComment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:13
+  Rendered comments/_form.html.erb (Duration: 0.6ms | Allocations: 335)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  ↳ app/views/comments/_list.html.erb:1
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/comments/_list.html.erb:7
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/comments/_list.html.erb:7
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/comments/_list.html.erb:7
+  Rendered comments/_list.html.erb (Duration: 6.4ms | Allocations: 3573)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 10.5ms | Allocations: 6034)
+  Rendered site/index.html.erb within layouts/application (Duration: 12.0ms | Allocations: 6742)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:15
+  Rendered layout layouts/application.html.erb (Duration: 18.8ms | Allocations: 12994)
+Completed 200 OK in 20ms (Views: 18.8ms | ActiveRecord: 0.5ms | Allocations: 13279)
+
+
+Started POST "/posts/1/comments/1/likes" for ::1 at 2022-09-04 21:39:11 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"1", "comment_id"=>"1"}
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.2ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 0.6ms | Allocations: 697)
+Completed 200 OK in 10ms (Views: 0.9ms | ActiveRecord: 2.2ms | Allocations: 5421)
+
+
+Started GET "/" for ::1 at 2022-09-04 21:39:53 +0200
+Processing by SiteController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering site/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/site/index.html.erb:4
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:4
+  [1m[36mComment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:13
+  Rendered comments/_form.html.erb (Duration: 1.1ms | Allocations: 526)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  ↳ app/views/comments/_list.html.erb:1
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/comments/_list.html.erb:7
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/comments/_list.html.erb:7
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/comments/_list.html.erb:7
+  Rendered comments/_list.html.erb (Duration: 5.7ms | Allocations: 3797)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 11.1ms | Allocations: 7074)
+  Rendered site/index.html.erb within layouts/application (Duration: 12.7ms | Allocations: 8082)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:15
+  Rendered layout layouts/application.html.erb (Duration: 20.9ms | Allocations: 14714)
+Completed 200 OK in 23ms (Views: 21.5ms | ActiveRecord: 0.7ms | Allocations: 15572)
+
+
+Started POST "/posts/1/comments/1/likes" for ::1 at 2022-09-04 21:39:54 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"1", "comment_id"=>"1"}
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mComment Load (0.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.1ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 1.1ms | Allocations: 1041)
+Completed 200 OK in 8ms (Views: 1.9ms | ActiveRecord: 1.9ms | Allocations: 6208)
+
+
+Started DELETE "/posts/8/comments/1/likes" for ::1 at 2022-09-04 21:39:55 +0200
+Processing by LikesController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"8", "comment_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = ? AND "comments"."id" = ? LIMIT ?[0m  [["user_id", 8], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mLike Delete All (1.9ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = ? AND "likes"."likeable_id" = ?[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 1]]
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  Rendering likes/destroy.html.erb
+  Rendered likes/destroy.html.erb (Duration: 0.9ms | Allocations: 816)
+Completed 200 OK in 8ms (Views: 1.1ms | ActiveRecord: 2.1ms | Allocations: 3698)
+
+
+Started POST "/posts/8/comments/1/likes" for ::1 at 2022-09-04 21:39:56 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"8", "comment_id"=>"1"}
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.2ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 0.5ms | Allocations: 697)
+Completed 200 OK in 15ms (Views: 0.8ms | ActiveRecord: 2.3ms | Allocations: 5482)
+
+
+Started DELETE "/posts/8/comments/1/likes" for ::1 at 2022-09-04 21:39:56 +0200
+Processing by LikesController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"8", "comment_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mComment Load (0.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = ? AND "comments"."id" = ? LIMIT ?[0m  [["user_id", 8], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mLike Delete All (1.8ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = ? AND "likes"."likeable_id" = ?[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 1]]
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  Rendering likes/destroy.html.erb
+  Rendered likes/destroy.html.erb (Duration: 0.6ms | Allocations: 601)
+Completed 200 OK in 6ms (Views: 1.0ms | ActiveRecord: 1.9ms | Allocations: 3176)
+
+
+Started POST "/posts/8/comments/1/likes" for ::1 at 2022-09-04 21:39:57 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"8", "comment_id"=>"1"}
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.2ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 0.9ms | Allocations: 697)
+Completed 200 OK in 11ms (Views: 1.3ms | ActiveRecord: 2.2ms | Allocations: 5438)
+
+
+Started DELETE "/posts/8/comments/1/likes" for ::1 at 2022-09-04 21:39:57 +0200
+Processing by LikesController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"8", "comment_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = ? AND "comments"."id" = ? LIMIT ?[0m  [["user_id", 8], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mLike Delete All (1.8ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = ? AND "likes"."likeable_id" = ?[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 1]]
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  Rendering likes/destroy.html.erb
+  Rendered likes/destroy.html.erb (Duration: 0.5ms | Allocations: 601)
+Completed 200 OK in 7ms (Views: 0.7ms | ActiveRecord: 2.0ms | Allocations: 3166)
+
+
+Started POST "/posts/1/comments/2/likes" for ::1 at 2022-09-04 21:39:58 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"1", "comment_id"=>"2"}
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.2ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 2]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 0.6ms | Allocations: 697)
+Completed 200 OK in 10ms (Views: 0.9ms | ActiveRecord: 2.2ms | Allocations: 5443)
+
+
+Started DELETE "/posts/8/comments/2/likes" for ::1 at 2022-09-04 21:39:58 +0200
+Processing by LikesController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"8", "comment_id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = ? AND "comments"."id" = ? LIMIT ?[0m  [["user_id", 8], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mLike Delete All (1.8ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = ? AND "likes"."likeable_id" = ?[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 2]]
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  Rendering likes/destroy.html.erb
+  Rendered likes/destroy.html.erb (Duration: 0.5ms | Allocations: 601)
+Completed 200 OK in 7ms (Views: 0.8ms | ActiveRecord: 2.0ms | Allocations: 3160)
+
+
+Started POST "/posts/8/comments/2/likes" for ::1 at 2022-09-04 21:39:58 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"8", "comment_id"=>"2"}
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.2ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 2]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 0.9ms | Allocations: 697)
+Completed 200 OK in 10ms (Views: 1.3ms | ActiveRecord: 2.1ms | Allocations: 5418)
+
+
+Started DELETE "/posts/8/comments/2/likes" for ::1 at 2022-09-04 21:39:59 +0200
+Processing by LikesController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"8", "comment_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = ? AND "comments"."id" = ? LIMIT ?[0m  [["user_id", 8], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mLike Delete All (1.8ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = ? AND "likes"."likeable_id" = ?[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 2]]
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  Rendering likes/destroy.html.erb
+  Rendered likes/destroy.html.erb (Duration: 0.5ms | Allocations: 601)
+Completed 200 OK in 7ms (Views: 0.7ms | ActiveRecord: 2.2ms | Allocations: 3193)
+
+
+Started POST "/posts/1/likes" for ::1 at 2022-09-04 21:40:15 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Post", "post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:4:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.2ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Post"], ["likeable_id", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 0.5ms | Allocations: 697)
+Completed 200 OK in 11ms (Views: 0.8ms | ActiveRecord: 2.1ms | Allocations: 5415)
+
+
+Started DELETE "/posts/1/likes" for ::1 at 2022-09-04 21:40:16 +0200
+Processing by LikesController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Post", "post_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:13:in `destroy'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 8], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:13:in `destroy'
+  [1m[36mLike Delete All (1.8ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = ? AND "likes"."likeable_id" = ?[0m  [["user_id", 8], ["likeable_type", "Post"], ["likeable_id", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+  Rendering likes/destroy.html.erb
+  Rendered likes/destroy.html.erb (Duration: 0.5ms | Allocations: 601)
+Completed 200 OK in 7ms (Views: 0.8ms | ActiveRecord: 2.0ms | Allocations: 3161)
+
+
+Started POST "/posts/1/likes" for ::1 at 2022-09-04 21:42:09 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Post", "post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:4:in `create'
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.1ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Post"], ["likeable_id", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 1.0ms | Allocations: 1046)
+Completed 200 OK in 8ms (Views: 1.7ms | ActiveRecord: 1.9ms | Allocations: 6212)
+
+
+Started DELETE "/posts/1/likes" for ::1 at 2022-09-04 21:42:09 +0200
+Processing by LikesController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Post", "post_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:13:in `destroy'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 8], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:13:in `destroy'
+  [1m[36mLike Delete All (1.9ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = ? AND "likes"."likeable_id" = ?[0m  [["user_id", 8], ["likeable_type", "Post"], ["likeable_id", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+  Rendering likes/destroy.html.erb
+  Rendered likes/destroy.html.erb (Duration: 0.7ms | Allocations: 816)
+Completed 200 OK in 8ms (Views: 1.0ms | ActiveRecord: 2.1ms | Allocations: 3711)
+
+
+Started POST "/posts/1/likes" for ::1 at 2022-09-04 21:42:10 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Post", "post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:4:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.2ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Post"], ["likeable_id", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 0.4ms | Allocations: 697)
+Completed 200 OK in 9ms (Views: 0.6ms | ActiveRecord: 2.1ms | Allocations: 5500)
+
+
+Started DELETE "/posts/1/likes" for ::1 at 2022-09-04 21:42:10 +0200
+Processing by LikesController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Post", "post_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:13:in `destroy'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 8], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:13:in `destroy'
+  [1m[36mLike Delete All (1.9ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = ? AND "likes"."likeable_id" = ?[0m  [["user_id", 8], ["likeable_type", "Post"], ["likeable_id", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+  Rendering likes/destroy.html.erb
+  Rendered likes/destroy.html.erb (Duration: 0.8ms | Allocations: 601)
+Completed 200 OK in 8ms (Views: 1.1ms | ActiveRecord: 2.1ms | Allocations: 3176)
+
+
+Started GET "/" for ::1 at 2022-09-04 21:43:28 +0200
+Processing by SiteController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering site/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/site/index.html.erb:4
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:4
+  [1m[36mComment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:13
+  Rendered comments/_form.html.erb (Duration: 0.8ms | Allocations: 526)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  ↳ app/views/comments/_list.html.erb:1
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/comments/_list.html.erb:7
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/comments/_list.html.erb:7
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/comments/_list.html.erb:7
+  Rendered comments/_list.html.erb (Duration: 3.7ms | Allocations: 3797)
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 7.3ms | Allocations: 7084)
+  Rendered site/index.html.erb within layouts/application (Duration: 8.4ms | Allocations: 8092)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:15
+  Rendered layout layouts/application.html.erb (Duration: 15.6ms | Allocations: 14919)
+Completed 200 OK in 17ms (Views: 16.2ms | ActiveRecord: 0.4ms | Allocations: 15776)
+
+
+Started POST "/posts/1/likes" for ::1 at 2022-09-04 21:43:29 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Post", "post_id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:4:in `create'
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.1ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Post"], ["likeable_id", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 1.1ms | Allocations: 1043)
+Completed 200 OK in 8ms (Views: 1.8ms | ActiveRecord: 1.8ms | Allocations: 6207)
+
+
+Started DELETE "/posts/1/likes" for ::1 at 2022-09-04 21:43:30 +0200
+Processing by LikesController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Post", "post_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:13:in `destroy'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 8], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:13:in `destroy'
+  [1m[36mLike Delete All (1.9ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = ? AND "likes"."likeable_id" = ?[0m  [["user_id", 8], ["likeable_type", "Post"], ["likeable_id", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+  Rendering likes/destroy.html.erb
+  Rendered likes/destroy.html.erb (Duration: 0.8ms | Allocations: 816)
+Completed 200 OK in 8ms (Views: 1.0ms | ActiveRecord: 2.1ms | Allocations: 3732)
+
+
+Started POST "/posts/1/likes" for ::1 at 2022-09-04 21:43:30 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Post", "post_id"=>"1"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:4:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Post"], ["likeable_id", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 1.2ms | Allocations: 697)
+Completed 200 OK in 16ms (Views: 1.7ms | ActiveRecord: 3.8ms | Allocations: 5489)
+
+
+Started DELETE "/posts/1/likes" for ::1 at 2022-09-04 21:43:31 +0200
+Processing by LikesController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Post", "post_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:13:in `destroy'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 8], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:13:in `destroy'
+  [1m[36mLike Delete All (1.9ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = ? AND "likes"."likeable_id" = ?[0m  [["user_id", 8], ["likeable_type", "Post"], ["likeable_id", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+  Rendering likes/destroy.html.erb
+  Rendered likes/destroy.html.erb (Duration: 0.6ms | Allocations: 601)
+Completed 200 OK in 7ms (Views: 0.9ms | ActiveRecord: 2.1ms | Allocations: 3170)
+
+
+Started POST "/posts/1/comments/1/likes" for ::1 at 2022-09-04 21:43:31 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"1", "comment_id"=>"1"}
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.2ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 0.8ms | Allocations: 697)
+Completed 200 OK in 10ms (Views: 1.1ms | ActiveRecord: 2.2ms | Allocations: 5428)
+
+
+Started DELETE "/posts/8/comments/1/likes" for ::1 at 2022-09-04 21:43:32 +0200
+Processing by LikesController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"8", "comment_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = ? AND "comments"."id" = ? LIMIT ?[0m  [["user_id", 8], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mLike Delete All (2.0ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = ? AND "likes"."likeable_id" = ?[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 1]]
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  Rendering likes/destroy.html.erb
+  Rendered likes/destroy.html.erb (Duration: 0.6ms | Allocations: 601)
+Completed 200 OK in 8ms (Views: 0.8ms | ActiveRecord: 2.2ms | Allocations: 3178)
+
+
+Started POST "/posts/8/comments/1/likes" for ::1 at 2022-09-04 21:43:32 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"8", "comment_id"=>"1"}
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mComment Load (0.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.1ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 0.5ms | Allocations: 697)
+Completed 200 OK in 8ms (Views: 0.8ms | ActiveRecord: 2.0ms | Allocations: 5418)
+
+
+Started DELETE "/posts/8/comments/1/likes" for ::1 at 2022-09-04 21:43:32 +0200
+Processing by LikesController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"8", "comment_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = ? AND "comments"."id" = ? LIMIT ?[0m  [["user_id", 8], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mLike Delete All (1.9ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = ? AND "likes"."likeable_id" = ?[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 1]]
+  ↳ app/controllers/likes_controller.rb:17:in `destroy'
+  Rendering likes/destroy.html.erb
+  Rendered likes/destroy.html.erb (Duration: 0.5ms | Allocations: 601)
+Completed 200 OK in 7ms (Views: 0.7ms | ActiveRecord: 2.1ms | Allocations: 3166)
+
+
+Started GET "/posts/new" for ::1 at 2022-09-04 21:43:34 +0200
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb
+  Rendered posts/new.html.erb (Duration: 1.8ms | Allocations: 1085)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.0ms | Allocations: 1812)
+
+
+Started POST "/posts" for ::1 at 2022-09-04 21:43:36 +0200
+Processing by PostsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"body"=>"asdfasdf"}, "commit"=>"send"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:12:in `create'
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `create'
+  [1m[36mPost Create (0.1ms)[0m  [1m[32mINSERT INTO "posts" ("user_id", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 8], ["body", "asdfasdf"], ["created_at", "2022-09-04 19:43:36.362041"], ["updated_at", "2022-09-04 19:43:36.362041"]]
+  ↳ app/controllers/posts_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:15:in `create'
+  Rendering posts/create.turbo_stream.erb
+  [1m[36mComment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/posts/_post.html.erb:13
+  Rendered comments/_form.html.erb (Duration: 0.3ms | Allocations: 347)
+  [1m[36mComment Load (0.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/comments/_list.html.erb:1
+  Rendered comments/_list.html.erb (Duration: 0.4ms | Allocations: 641)
+  Rendered posts/_post.html.erb (Duration: 2.3ms | Allocations: 2722)
+  Rendered posts/create.turbo_stream.erb (Duration: 3.2ms | Allocations: 3148)
+Completed 200 OK in 10ms (Views: 3.4ms | ActiveRecord: 1.9ms | Allocations: 7836)
+
+
+Started POST "/posts/2/likes" for ::1 at 2022-09-04 21:43:38 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Post", "post_id"=>"2"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:4:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.2ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Post"], ["likeable_id", 2]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 0.5ms | Allocations: 697)
+Completed 200 OK in 13ms (Views: 0.9ms | ActiveRecord: 2.2ms | Allocations: 5607)
+
+
+Started DELETE "/posts/2/likes" for ::1 at 2022-09-04 21:43:39 +0200
+Processing by LikesController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Post", "post_id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:13:in `destroy'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = ? AND "posts"."id" = ? LIMIT ?[0m  [["user_id", 8], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:13:in `destroy'
+  [1m[36mLike Delete All (1.8ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."likeable_type" = ? AND "likes"."likeable_id" = ?[0m  [["user_id", 8], ["likeable_type", "Post"], ["likeable_id", 2]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+  Rendering likes/destroy.html.erb
+  Rendered likes/destroy.html.erb (Duration: 0.5ms | Allocations: 601)
+Completed 200 OK in 7ms (Views: 0.7ms | ActiveRecord: 2.0ms | Allocations: 3177)
+
+
+Started POST "/posts/2/comments" for ::1 at 2022-09-04 21:43:40 +0200
+Processing by CommentsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "comment"=>{"body"=>"ss"}, "commit"=>"post", "post_id"=>"2"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:5:in `create'
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:10:in `create'
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "ss"], ["user_id", 8], ["post_id", 2], ["created_at", "2022-09-04 19:43:40.854046"], ["updated_at", "2022-09-04 19:43:40.854046"]]
+  ↳ app/controllers/comments_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/comments_controller.rb:10:in `create'
+  Rendering comments/create.turbo_stream.erb
+  Rendered comments/_form.html.erb (Duration: 0.4ms | Allocations: 452)
+  [1m[36mComment Load (0.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/comments/_list.html.erb:1
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/comments/_list.html.erb:7
+  Rendered comments/_list.html.erb (Duration: 1.4ms | Allocations: 1845)
+  [1m[36mComment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/comments/create.turbo_stream.erb:10
+  Rendered comments/create.turbo_stream.erb (Duration: 3.0ms | Allocations: 3491)
+Completed 200 OK in 12ms (Views: 3.8ms | ActiveRecord: 1.8ms | Allocations: 8414)
+
+
+Started POST "/posts/2/comments" for ::1 at 2022-09-04 21:43:43 +0200
+Processing by CommentsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "comment"=>{"body"=>"ss"}, "commit"=>"post", "post_id"=>"2"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:5:in `create'
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:10:in `create'
+  [1m[36mComment Create (0.1ms)[0m  [1m[32mINSERT INTO "comments" ("body", "user_id", "post_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "ss"], ["user_id", 8], ["post_id", 2], ["created_at", "2022-09-04 19:43:43.065737"], ["updated_at", "2022-09-04 19:43:43.065737"]]
+  ↳ app/controllers/comments_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/comments_controller.rb:10:in `create'
+  Rendering comments/create.turbo_stream.erb
+  Rendered comments/_form.html.erb (Duration: 0.6ms | Allocations: 330)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/comments/_list.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/comments/_list.html.erb:7
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/views/comments/_list.html.erb:7
+  Rendered comments/_list.html.erb (Duration: 4.2ms | Allocations: 2639)
+  [1m[36mComment Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 2]]
+  ↳ app/views/comments/create.turbo_stream.erb:10
+  Rendered comments/create.turbo_stream.erb (Duration: 6.2ms | Allocations: 3822)
+Completed 200 OK in 12ms (Views: 6.3ms | ActiveRecord: 2.0ms | Allocations: 7690)
+
+
+Started POST "/posts/8/comments/1/likes" for ::1 at 2022-09-04 21:43:44 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"8", "comment_id"=>"1"}
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mComment Load (0.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.1ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 0.6ms | Allocations: 697)
+Completed 200 OK in 7ms (Views: 0.9ms | ActiveRecord: 1.8ms | Allocations: 5443)
+
+
+Started POST "/posts/2/comments/5/likes" for ::1 at 2022-09-04 21:43:44 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"2", "comment_id"=>"5"}
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mComment Load (0.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.1ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 5]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 0.6ms | Allocations: 697)
+Completed 200 OK in 8ms (Views: 0.9ms | ActiveRecord: 1.7ms | Allocations: 5437)
+
+
+Started POST "/posts/2/comments/4/likes" for ::1 at 2022-09-04 21:43:45 +0200
+Processing by LikesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "likeable_type"=>"Comment", "post_id"=>"2", "comment_id"=>"4"}
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:6:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mLike Create (0.1ms)[0m  [1m[32mINSERT INTO "likes" ("user_id", "likeable_type", "likeable_id") VALUES (?, ?, ?)[0m  [["user_id", 8], ["likeable_type", "Comment"], ["likeable_id", 4]]
+  ↳ app/models/user.rb:15:in `like!'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:15:in `like!'
+  Rendering likes/create.html.erb
+  Rendered likes/create.html.erb (Duration: 0.6ms | Allocations: 697)
+Completed 200 OK in 10ms (Views: 0.8ms | ActiveRecord: 2.0ms | Allocations: 5442)
+
+

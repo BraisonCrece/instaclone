@@ -1,7 +1,7 @@
-<%= turbo_frame_tag "post-likes" do %>
+<%= turbo_frame_tag "post-like-#{@likeable.id}" do %>
   <%= button_to "", post_likes_path(@likeable), params: {likeable_type: 'Post'}, class: "post-actions-unlike", method: :delete %>
 <% end %>
 
-<%= turbo_frame_tag "comment-likes" do %>
+<%= turbo_frame_tag "comment-like-#{@likeable.id}" do %>
   <%= button_to "", post_comment_likes_path(@likeable.user_id, @likeable.id), params: {likeable_type: 'Comment'}, class: "post-actions-unlike", method: :delete %>
 <% end %>
