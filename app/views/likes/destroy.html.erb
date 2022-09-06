@@ -3,5 +3,5 @@
 <% end %>
 
 <%= turbo_frame_tag "comment-like-#{@likeable.id}" do %>
-  <%= button_to "",post_comment_likes_path(@likeable.user_id, @likeable.id), params: {likeable_type: 'Comment'}, class: "post-actions-like" %>
+  <%= button_to "", post_comment_likes_path(@likeable.user_id, @likeable.id), params: {likeable_type: 'Comment'}, class: "post-actions-like" %>
 <% end %>
