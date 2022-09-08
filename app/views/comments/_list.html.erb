@@ -1,4 +1,4 @@
-<% post.comments.each do |comment| %>
+<% post.comments.each do |comment| %>  
   <div class="comment">
     <% if has_likes_on?(comment) %>
       <%= turbo_frame_tag "comment-like-#{comment.id}" do %>
