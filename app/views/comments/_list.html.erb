@@ -1,10 +1,10 @@
 <% post.comments.each do |comment| %>  
   <div class="comment">
-    <% if has_likes_on?(comment) %>
+    <% if has_likes_on?(comment) && current_user %>
       <%= turbo_frame_tag "comment-like-#{comment.id}" do %>
         <%= button_to "", post_comment_likes_path(comment.user_id, comment.id), params: {likeable_type: 'Comment'}, class: "post-actions-unlike", method: :delete %>
       <% end %>
-    <% else %>
+    <% elsif current_user %>
       <%= turbo_frame_tag "comment-like-#{comment.id}" do %>
         <%= button_to "", post_comment_likes_path(comment.post_id, comment.id), params: { likeable_type: 'Comment' }, class: "post-actions-like" %>
       <% end %>
