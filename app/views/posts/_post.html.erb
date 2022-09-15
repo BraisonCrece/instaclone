@@ -4,7 +4,7 @@
     <div><%= post.user.username %></div>
   </div>
   <div class="post-body">
-    <span><%= post.body %></span>
+    <span><%= image_tag post.image, class: "image"%></span> 
   </div>
   <% if current_user %>  
     <div class="post-actions">    

@@ -89,6 +89,10 @@ body {
   border-bottom: 1px solid #ccc;
 }
 
+.image{
+  height: 280px;
+}
+
 .post-body span {
   font-size: 20px;
   line-height: 1.6;
