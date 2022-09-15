@@ -1,13 +1,3 @@
 <%= turbo_frame_tag "post-form" do %>
-  <%= form_with model: @post do |f| %>
-    <div>
-      <%= f.label :image %>
-      <%= f.file_field :image %>
-    </div>
-    <div>
-      <%= f.label :body %>
-      <%= f.text_field :body %>
-    </div>
-    <%= f.submit :send %>
-  <% end %>
+  <%= render 'form', post: @post %>
 <% end %>

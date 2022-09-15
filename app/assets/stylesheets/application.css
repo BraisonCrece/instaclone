@@ -31,6 +31,7 @@ body {
   border: 1px solid #ccc;
   font-size: 12px;
   font-family: Verdana, Arial, Tahoma, Serif;
+  margin: 30px 0;
 }
 
 .post-author, .post-body, .post-actions, .post-comments {
@@ -89,6 +90,8 @@ body {
   border-bottom: 1px solid #ccc;
 }
 
+
+
 .image{
   height: 280px;
 }
@@ -118,7 +121,7 @@ body {
   display: block;
 }
 
-.post-actions {
+.post-actions, .post-description {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

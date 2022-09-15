@@ -5,6 +5,13 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    if @post.user_id != current_user.id
+      redirect_to root_path, notice: "Que fas??"
+    end    
+  end
+
+  def edit
+    @post = Post.find(params[:id])
   end
 
   def create
@@ -15,6 +22,30 @@ class PostsController < ApplicationController
       @post.save
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    respond_to do |format|
+      if @post.update(post_params)
+        format.html { redirect_to :show, notice: 'Post was successfully updated.' }
+        format.json { render :show, status: :ok, location: @post }
+      else
+        format.html { render :edit }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /line_items/1
+  # DELETE /line_items/1.json
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: 'Post was successfully deleted.' }
+      format.json { head :no_content }
     end
   end
 
