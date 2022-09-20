@@ -13,7 +13,8 @@ Rails.application.routes.draw do
       end
     end
   end
-  
+
+  get "/my_profile", to: "user#profile", as: :profile
   
   devise_for :users
   root "site#index"

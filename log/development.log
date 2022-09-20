@@ -38283,3 +38283,718 @@ Processing by SiteController#index as TURBO_STREAM
 Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.1ms | Allocations: 9111)
 
 
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes"[0m
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes"[0m
+  [1m[36mLike Delete All (1.9ms)[0m  [1m[31mDELETE FROM "likes"[0m
+Started GET "/" for ::1 at 2022-09-20 10:26:49 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SiteController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering site/index.html.erb within layouts/application
+  [1m[36mPost Load (3.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/site/index.html.erb:5
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 31)
+  Rendered site/index.html.erb within layouts/application (Duration: 6.8ms | Allocations: 1274)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:15
+  Rendered layout layouts/application.html.erb (Duration: 80.3ms | Allocations: 63849)
+Completed 200 OK in 87ms (Views: 78.1ms | ActiveRecord: 3.4ms | Allocations: 70763)
+
+
+Started GET "/my_profile" for ::1 at 2022-09-20 10:26:50 +0200
+Processing by UserController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering user/profile.html.erb within layouts/application
+  Rendered user/profile.html.erb within layouts/application (Duration: 0.2ms | Allocations: 142)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 7450)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.1ms | Allocations: 9557)
+
+
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+Started GET "/my_profile" for ::1 at 2022-09-20 10:38:26 +0200
+Processing by UserController#profile as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering user/profile.html.erb within layouts/application
+  Rendered user/profile.html.erb within layouts/application (Duration: 24.5ms | Allocations: 16246)
+  Rendered layout layouts/application.html.erb (Duration: 24.8ms | Allocations: 16353)
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 0.9ms | Allocations: 19192)
+
+
+  
+ActionView::Template::Error (undefined method `attached?' for #<User id: 12, email: "image@image.com", created_at: "2022-09-20 08:18:35.950274000 +0000", updated_at: "2022-09-20 08:18:35.950274000 +0000", username: "Image">):
+    1: <div class="user_profile">
+    2:   <% if current_user.attached? %>
+    3:     <%= current_user.profile_img %>
+    4:   <% else %>
+    5:     <%= form_with model: @user do |f| %>
+  
+app/views/user/profile.html.erb:2
+Started GET "/my_profile" for ::1 at 2022-09-20 10:39:04 +0200
+Processing by UserController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering user/profile.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 12], ["record_type", "User"], ["name", "profile_img"], ["LIMIT", 1]]
+  ↳ app/views/user/profile.html.erb:2
+  Rendered user/profile.html.erb within layouts/application (Duration: 26.6ms | Allocations: 19289)
+  Rendered layout layouts/application.html.erb (Duration: 26.8ms | Allocations: 19386)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 0.7ms | Allocations: 21472)
+
+
+  
+ActionView::Template::Error (undefined method `user_path' for #<ActionView::Base:0x0000000000d228>
+
+              recipient.public_send(method, *args, options)
+                       ^^^^^^^^^^^^):
+    2:   <% if current_user.profile_img.attached? %>
+    3:     <%= current_user.profile_img %>
+    4:   <% else %>
+    5:     <%= form_with model: @user do |f| %>
+    6:       <%= f.label :profile_img, "Upload an profile image"%>
+    7:       <%= f.file_field :profile_img %>
+    8:       <%= f.submit :send %>
+  
+app/views/user/profile.html.erb:5
+Started GET "/my_profile" for ::1 at 2022-09-20 10:39:47 +0200
+Processing by UserController#profile as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering user/profile.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 12], ["record_type", "User"], ["name", "profile_img"], ["LIMIT", 1]]
+  ↳ app/views/user/profile.html.erb:2
+  Rendered user/profile.html.erb within layouts/application (Duration: 8.4ms | Allocations: 9983)
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 10081)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.7ms | Allocations: 17134)
+
+
+  
+ActionView::Template::Error (undefined method `user_path' for #<ActionView::Base:0x00000000012b60>
+
+              recipient.public_send(method, *args, options)
+                       ^^^^^^^^^^^^):
+    2:   <% if current_user.profile_img.attached? %>
+    3:     <%= current_user.profile_img %>
+    4:   <% else %>
+    5:     <%= form_with model: @user do |f| %>
+    6:       <%= f.label :profile_img, "Upload an profile image"%>
+    7:       <%= f.file_field :profile_img %>
+    8:       <%= f.submit :send %>
+  
+app/views/user/profile.html.erb:5
+Started GET "/my_profile" for ::1 at 2022-09-20 10:39:48 +0200
+Processing by UserController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering user/profile.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 12], ["record_type", "User"], ["name", "profile_img"], ["LIMIT", 1]]
+  ↳ app/views/user/profile.html.erb:2
+  Rendered user/profile.html.erb within layouts/application (Duration: 5.4ms | Allocations: 7230)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 7318)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.1ms | Allocations: 9220)
+
+
+  
+ActionView::Template::Error (undefined method `user_path' for #<ActionView::Base:0x00000000012e58>
+
+              recipient.public_send(method, *args, options)
+                       ^^^^^^^^^^^^):
+    2:   <% if current_user.profile_img.attached? %>
+    3:     <%= current_user.profile_img %>
+    4:   <% else %>
+    5:     <%= form_with model: @user do |f| %>
+    6:       <%= f.label :profile_img, "Upload an profile image"%>
+    7:       <%= f.file_field :profile_img %>
+    8:       <%= f.submit :send %>
+  
+app/views/user/profile.html.erb:5
+Started GET "/my_profile" for ::1 at 2022-09-20 10:39:50 +0200
+Processing by UserController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering user/profile.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 12], ["record_type", "User"], ["name", "profile_img"], ["LIMIT", 1]]
+  ↳ app/views/user/profile.html.erb:2
+  Rendered user/profile.html.erb within layouts/application (Duration: 12.3ms | Allocations: 7229)
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 7318)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.3ms | Allocations: 9131)
+
+
+  
+ActionView::Template::Error (undefined method `user_path' for #<ActionView::Base:0x00000000013150>
+
+              recipient.public_send(method, *args, options)
+                       ^^^^^^^^^^^^):
+    2:   <% if current_user.profile_img.attached? %>
+    3:     <%= current_user.profile_img %>
+    4:   <% else %>
+    5:     <%= form_with model: @user do |f| %>
+    6:       <%= f.label :profile_img, "Upload an profile image"%>
+    7:       <%= f.file_field :profile_img %>
+    8:       <%= f.submit :send %>
+  
+app/views/user/profile.html.erb:5
+Started GET "/my_profile" for ::1 at 2022-09-20 10:40:09 +0200
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UserController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering user/profile.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 12], ["record_type", "User"], ["name", "profile_img"], ["LIMIT", 1]]
+  ↳ app/views/user/profile.html.erb:2
+  Rendered user/profile.html.erb within layouts/application (Duration: 16.0ms | Allocations: 12278)
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 12393)
+Completed 500 Internal Server Error in 64ms (ActiveRecord: 1.6ms | Allocations: 26048)
+
+
+  
+ActionView::Template::Error (undefined method `user_path' for #<ActionView::Base:0x0000000000ca30>
+
+              recipient.public_send(method, *args, options)
+                       ^^^^^^^^^^^^):
+    2:   <% if current_user.profile_img.attached? %>
+    3:     <%= current_user.profile_img %>
+    4:   <% else %>
+    5:     <%= form_with model: @user do |f| %>
+    6:       <%= f.label :profile_img, "Upload an profile image"%>
+    7:       <%= f.file_field :profile_img %>
+    8:       <%= f.submit :send %>
+  
+app/views/user/profile.html.erb:5
+Started GET "/my_profile" for ::1 at 2022-09-20 10:41:14 +0200
+Processing by UserController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering user/profile.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 12], ["record_type", "User"], ["name", "profile_img"], ["LIMIT", 1]]
+  ↳ app/views/user/profile.html.erb:2
+  Rendered user/profile.html.erb within layouts/application (Duration: 8.9ms | Allocations: 7728)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | Allocations: 7823)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.2ms | Allocations: 10415)
+
+
+  
+ActionView::Template::Error (undefined method `user_path' for #<ActionView::Base:0x0000000000cdc8>
+
+              recipient.public_send(method, *args, options)
+                       ^^^^^^^^^^^^):
+    2:   <% if current_user.profile_img.attached? %>
+    3:     <%= current_user.profile_img %>
+    4:   <% else %>
+    5:     <%= form_with model: @user do |f| %>
+    6:       <%= f.label :profile_img, "Upload an profile image"%>
+    7:       <%= f.file_field :profile_img %>
+    8:       
+  
+app/views/user/profile.html.erb:5
+Started GET "/my_profile" for ::1 at 2022-09-20 10:41:15 +0200
+Processing by UserController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering user/profile.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 12], ["record_type", "User"], ["name", "profile_img"], ["LIMIT", 1]]
+  ↳ app/views/user/profile.html.erb:2
+  Rendered user/profile.html.erb within layouts/application (Duration: 11.5ms | Allocations: 7229)
+  Rendered layout layouts/application.html.erb (Duration: 11.7ms | Allocations: 7318)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.3ms | Allocations: 9237)
+
+
+  
+ActionView::Template::Error (undefined method `user_path' for #<ActionView::Base:0x0000000000d0e8>
+
+              recipient.public_send(method, *args, options)
+                       ^^^^^^^^^^^^):
+    2:   <% if current_user.profile_img.attached? %>
+    3:     <%= current_user.profile_img %>
+    4:   <% else %>
+    5:     <%= form_with model: @user do |f| %>
+    6:       <%= f.label :profile_img, "Upload an profile image"%>
+    7:       <%= f.file_field :profile_img %>
+    8:       
+  
+app/views/user/profile.html.erb:5
+Started GET "/my_profile" for ::1 at 2022-09-20 10:51:22 +0200
+Processing by UserController#profile as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering user/profile.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 12], ["record_type", "User"], ["name", "profile_img"], ["LIMIT", 1]]
+  ↳ app/views/user/profile.html.erb:2
+  Rendered user/profile.html.erb within layouts/application (Duration: 8.5ms | Allocations: 10018)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 10115)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.5ms | Allocations: 16930)
+
+
+  
+ActionView::Template::Error (undefined method `user_path' for #<ActionView::Base:0x000000000129f8>
+
+              recipient.public_send(method, *args, options)
+                       ^^^^^^^^^^^^):
+    2:   <% if current_user.profile_img.attached? %>
+    3:     <%= current_user.profile_img %>
+    4:   <% else %>
+    5:     <%= form_with model: @user do |f| %>
+    6:       <%= f.label :profile_img, "Upload an profile image"%>
+    7:       <%= f.file_field :profile_img %>
+    8:       
+  
+app/views/user/profile.html.erb:5
+Started GET "/my_profile" for ::1 at 2022-09-20 10:51:23 +0200
+Processing by UserController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering user/profile.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 12], ["record_type", "User"], ["name", "profile_img"], ["LIMIT", 1]]
+  ↳ app/views/user/profile.html.erb:2
+  Rendered user/profile.html.erb within layouts/application (Duration: 16.0ms | Allocations: 7231)
+  Rendered layout layouts/application.html.erb (Duration: 16.3ms | Allocations: 7320)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.3ms | Allocations: 9240)
+
+
+  
+ActionView::Template::Error (undefined method `user_path' for #<ActionView::Base:0x00000000012d18>
+
+              recipient.public_send(method, *args, options)
+                       ^^^^^^^^^^^^):
+    2:   <% if current_user.profile_img.attached? %>
+    3:     <%= current_user.profile_img %>
+    4:   <% else %>
+    5:     <%= form_with model: @user do |f| %>
+    6:       <%= f.label :profile_img, "Upload an profile image"%>
+    7:       <%= f.file_field :profile_img %>
+    8:       
+  
+app/views/user/profile.html.erb:5
+Started GET "/my_profile" for ::1 at 2022-09-20 10:51:34 +0200
+Processing by UserController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering user/profile.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 12], ["record_type", "User"], ["name", "profile_img"], ["LIMIT", 1]]
+  ↳ app/views/user/profile.html.erb:2
+  Rendered user/profile.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1249)
+  Rendered layout layouts/application.html.erb (Duration: 38.5ms | Allocations: 55240)
+Completed 200 OK in 41ms (Views: 39.3ms | ActiveRecord: 0.1ms | Allocations: 57671)
+
+
+Started GET "/my_profile" for ::1 at 2022-09-20 10:51:36 +0200
+Processing by UserController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:3:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering user/profile.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 12], ["record_type", "User"], ["name", "profile_img"], ["LIMIT", 1]]
+  ↳ app/views/user/profile.html.erb:2
+  Rendered user/profile.html.erb within layouts/application (Duration: 0.8ms | Allocations: 874)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 7885)
+Completed 200 OK in 7ms (Views: 5.1ms | ActiveRecord: 0.1ms | Allocations: 9808)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2022-09-20 10:51:37 +0200
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms (ActiveRecord: 0.1ms | Allocations: 4825)
+
+
+Started DELETE "/" for ::1 at 2022-09-20 10:51:37 +0200
+  
+ActionController::RoutingError (No route matches [DELETE] "/"):
+  
+Started GET "/my_profile" for ::1 at 2022-09-20 10:51:38 +0200
+Processing by UserController#profile as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1682)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass
+
+    @user = User.find(current_user.id)
+                                  ^^^):
+  
+app/controllers/user_controller.rb:3:in `profile'
+Started GET "/my_profile" for ::1 at 2022-09-20 10:51:56 +0200
+  
+ActionController::RoutingError (uninitialized constant UserController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+Started GET "/" for ::1 at 2022-09-20 10:52:07 +0200
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SiteController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering site/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/site/index.html.erb:5
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 31)
+  Rendered site/index.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1274)
+  Rendered layout layouts/application.html.erb (Duration: 76.0ms | Allocations: 55990)
+Completed 200 OK in 88ms (Views: 77.7ms | ActiveRecord: 0.1ms | Allocations: 62882)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-09-20 10:52:09 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 744)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 5047)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 12189)
+Completed 200 OK in 16ms (Views: 9.8ms | ActiveRecord: 0.5ms | Allocations: 19262)
+
+
+Started GET "/users/sign_up" for ::1 at 2022-09-20 10:52:11 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.7ms | Allocations: 232)
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 159)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 5.4ms | Allocations: 2585)
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | Allocations: 9726)
+Completed 200 OK in 17ms (Views: 15.7ms | ActiveRecord: 0.0ms | Allocations: 11263)
+
+
+Started GET "/users/sign_up" for ::1 at 2022-09-20 10:52:31 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.3ms | Allocations: 225)
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 562)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 3220)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 10734)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.0ms | Allocations: 12263)
+
+
+Started POST "/users" for ::1 at 2022-09-20 10:52:53 +0200
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"image2@image.com", "username"=>"image2", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "profile_img"=>#<ActionDispatch::Http::UploadedFile:0x00007fcf24cc1dc0 @tempfile=#<Tempfile:/tmp/RackMultipart20220920-28801-9jjlr0.png>, @original_filename="eu.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[profile_img]\"; filename=\"eu.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Sign up"}
+[31mUnpermitted parameter: :profile_img. Context: { controller: Devise::RegistrationsController, action: create, request: #<ActionDispatch::Request:0x00007fcf24cc48e0>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"image2@image.com", "username"=>"image2", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "profile_img"=>#<ActionDispatch::Http::UploadedFile:0x00007fcf24cc1dc0 @tempfile=#<Tempfile:/tmp/RackMultipart20220920-28801-9jjlr0.png>, @original_filename="eu.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[profile_img]\"; filename=\"eu.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Sign up", "controller"=>"devise/registrations", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "image2@image.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "image2@image.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2022-09-20 08:52:53.810389"], ["updated_at", "2022-09-20 08:52:53.810389"], ["username", "image2"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 195ms (ActiveRecord: 1.9ms | Allocations: 11019)
+
+
+Started GET "/" for ::1 at 2022-09-20 10:52:53 +0200
+Processing by SiteController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering site/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/site/index.html.erb:5
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 16)
+  Rendered site/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 903)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:15
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 9728)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.2ms | Allocations: 10486)
+
+
+Started GET "/" for ::1 at 2022-09-20 10:53:47 +0200
+Processing by SiteController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering site/index.html.erb within layouts/application
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/site/index.html.erb:5
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/site/index.html.erb:5
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 18)
+  Rendered site/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1535)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:15
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | Allocations: 25839)
+Completed 200 OK in 18ms (Views: 15.0ms | ActiveRecord: 0.7ms | Allocations: 29593)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2022-09-20 10:53:50 +0200
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 0.1ms | Allocations: 3360)
+
+
+Started DELETE "/" for ::1 at 2022-09-20 10:53:50 +0200
+  
+ActionController::RoutingError (No route matches [DELETE] "/"):
+  
+Started GET "/" for ::1 at 2022-09-20 10:53:51 +0200
+Processing by SiteController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering site/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/site/index.html.erb:5
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 16)
+  Rendered site/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 732)
+  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 8311)
+Completed 200 OK in 9ms (Views: 8.6ms | ActiveRecord: 0.1ms | Allocations: 8639)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-09-20 10:53:52 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 168)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1849)
+  Rendered layout layouts/application.html.erb (Duration: 11.9ms | Allocations: 8989)
+Completed 200 OK in 14ms (Views: 13.4ms | ActiveRecord: 0.0ms | Allocations: 10343)
+
+
+Started GET "/users/sign_up" for ::1 at 2022-09-20 10:53:54 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 28)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 109)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1844)
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | Allocations: 8984)
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.0ms | Allocations: 10364)
+
+
+Started POST "/users" for ::1 at 2022-09-20 10:54:20 +0200
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"a@b.com", "username"=>"ab", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "profile_img"=>#<ActionDispatch::Http::UploadedFile:0x00007fcf2c855630 @tempfile=#<Tempfile:/tmp/RackMultipart20220920-28801-c21zi3.png>, @original_filename="eu.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[profile_img]\"; filename=\"eu.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Sign up"}
+[31mUnpermitted parameter: :profile_img. Context: { controller: Devise::RegistrationsController, action: create, request: #<ActionDispatch::Request:0x00007fcf2c850400>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"a@b.com", "username"=>"ab", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "profile_img"=>#<ActionDispatch::Http::UploadedFile:0x00007fcf2c855630 @tempfile=#<Tempfile:/tmp/RackMultipart20220920-28801-c21zi3.png>, @original_filename="eu.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[profile_img]\"; filename=\"eu.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Sign up", "controller"=>"devise/registrations", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "a@b.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "a@b.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2022-09-20 08:54:20.491570"], ["updated_at", "2022-09-20 08:54:20.491570"], ["username", "ab"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 172ms (ActiveRecord: 1.8ms | Allocations: 6666)
+
+
+Started GET "/" for ::1 at 2022-09-20 10:54:20 +0200
+Processing by SiteController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering site/index.html.erb within layouts/application
+  [1m[36mPost Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/site/index.html.erb:5
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 16)
+  Rendered site/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 670)
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:15
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | Allocations: 8910)
+Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.1ms | Allocations: 9199)
+
+
+Started GET "/" for ::1 at 2022-09-20 10:56:39 +0200
+Processing by SiteController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering site/index.html.erb within layouts/application
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/site/index.html.erb:5
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/site/index.html.erb:5
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 18)
+  Rendered site/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1531)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:15
+  Rendered layout layouts/application.html.erb (Duration: 15.6ms | Allocations: 25842)
+Completed 200 OK in 19ms (Views: 16.2ms | ActiveRecord: 0.9ms | Allocations: 29587)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2022-09-20 10:56:41 +0200
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms | Allocations: 2885)
+
+
+Started DELETE "/" for ::1 at 2022-09-20 10:56:41 +0200
+  
+ActionController::RoutingError (No route matches [DELETE] "/"):
+  
+Started GET "/" for ::1 at 2022-09-20 10:56:43 +0200
+Processing by SiteController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering site/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/site/index.html.erb:5
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 14)
+  Rendered site/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 664)
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 8152)
+Completed 200 OK in 13ms (Views: 12.5ms | ActiveRecord: 0.1ms | Allocations: 8460)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-09-20 10:56:44 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 171)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1503)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 8642)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.0ms | Allocations: 9834)
+
+
+Started GET "/users/sign_up" for ::1 at 2022-09-20 10:56:46 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 28)
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 109)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1844)
+  Rendered layout layouts/application.html.erb (Duration: 12.9ms | Allocations: 8984)
+Completed 200 OK in 16ms (Views: 14.4ms | ActiveRecord: 0.0ms | Allocations: 10382)
+
+
+Started POST "/users" for ::1 at 2022-09-20 10:57:13 +0200
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"2@3.com", "username"=>"imagen4", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "profile_img"=>#<ActionDispatch::Http::UploadedFile:0x00007fcf2c061690 @tempfile=#<Tempfile:/tmp/RackMultipart20220920-28801-zaaxrp.png>, @original_filename="eu.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[profile_img]\"; filename=\"eu.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Sign up"}
+[31mUnpermitted parameter: :username. Context: { controller: Devise::RegistrationsController, action: create, request: #<ActionDispatch::Request:0x00007fcf2c05cde8>, params: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"2@3.com", "username"=>"imagen4", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "profile_img"=>#<ActionDispatch::Http::UploadedFile:0x00007fcf2c061690 @tempfile=#<Tempfile:/tmp/RackMultipart20220920-28801-zaaxrp.png>, @original_filename="eu.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[profile_img]\"; filename=\"eu.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Sign up", "controller"=>"devise/registrations", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "2@3.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 610)
+  Rendered devise/shared/_links.html.erb (Duration: 0.1ms | Allocations: 86)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 2854)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 9907)
+Completed 200 OK in 211ms (Views: 6.1ms | ActiveRecord: 0.4ms | Allocations: 31467)
+
+
+Started POST "/users" for ::1 at 2022-09-20 10:58:18 +0200
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"22@3.com", "username"=>"imagen41", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "profile_img"=>#<ActionDispatch::Http::UploadedFile:0x00007f82a04cc1b8 @tempfile=#<Tempfile:/tmp/RackMultipart20220920-29858-b9vnr2.png>, @original_filename="eu.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[profile_img]\"; filename=\"eu.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "22@3.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "22@3.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2022-09-20 08:58:18.725033"], ["updated_at", "2022-09-20 08:58:18.725033"], ["username", "imagen41"]]
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 15], ["record_type", "User"], ["name", "profile_img"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 15], ["record_type", "User"], ["name", "profile_img"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Create (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["key", "zcl9jrgp7parwufkus45kwo9xfrb"], ["filename", "eu.png"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 1147644], ["checksum", "+gbIIjgWkIJ7pxlOBz25Bw=="], ["created_at", "2022-09-20 08:58:18.735238"]]
+  [1m[36mActiveStorage::Attachment Create (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "profile_img"], ["record_type", "User"], ["record_id", 15], ["blob_id", 12], ["created_at", "2022-09-20 08:58:18.737102"]]
+  [1m[36mUser Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2022-09-20 08:58:18.738674"], ["id", 15]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+[36m  Disk Storage (2.2ms) [0m[32mUploaded file to key: zcl9jrgp7parwufkus45kwo9xfrb (checksum: +gbIIjgWkIJ7pxlOBz25Bw==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 1d9cd41f-22e5-4532-ac31-ea56c53033c4) to Async(default) with arguments: #<GlobalID:0x00007f829f6c0a88 @uri=#<URI::GID gid://instaclone/ActiveStorage::Blob/12>>
+Redirected to http://localhost:3000/
+Completed 302 Found in 250ms (ActiveRecord: 4.4ms | Allocations: 48885)
+
+
+Started GET "/" for ::1 at 2022-09-20 10:58:18 +0200
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d9cd41f-22e5-4532-ac31-ea56c53033c4]   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d9cd41f-22e5-4532-ac31-ea56c53033c4] Performing ActiveStorage::AnalyzeJob (Job ID: 1d9cd41f-22e5-4532-ac31-ea56c53033c4) from Async(default) enqueued at 2022-09-20T08:58:18Z with arguments: #<GlobalID:0x00007f82a0531978 @uri=#<URI::GID gid://instaclone/ActiveStorage::Blob/12>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d9cd41f-22e5-4532-ac31-ea56c53033c4] [36m  Disk Storage (1.3ms) [0m[34mDownloaded file from key: zcl9jrgp7parwufkus45kwo9xfrb[0m
+Processing by SiteController#index as TURBO_STREAM
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d9cd41f-22e5-4532-ac31-ea56c53033c4] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d9cd41f-22e5-4532-ac31-ea56c53033c4]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d9cd41f-22e5-4532-ac31-ea56c53033c4]   [1m[36mActiveStorage::Blob Update (0.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 12]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d9cd41f-22e5-4532-ac31-ea56c53033c4]   [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1d9cd41f-22e5-4532-ac31-ea56c53033c4] Performed ActiveStorage::AnalyzeJob (Job ID: 1d9cd41f-22e5-4532-ac31-ea56c53033c4) from Async(default) in 13.35ms
+  Rendering layout layouts/application.html.erb
+  Rendering site/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/site/index.html.erb:5
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 31)
+  Rendered site/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1239)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:15
+  Rendered layout layouts/application.html.erb (Duration: 35.3ms | Allocations: 56713)
+Completed 200 OK in 48ms (Views: 35.8ms | ActiveRecord: 0.2ms | Allocations: 64107)
+
+
+Started GET "/my_profile" for ::1 at 2022-09-20 10:58:25 +0200
+  
+ActionController::RoutingError (uninitialized constant UserController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+Started GET "/my_profile" for ::1 at 2022-09-20 10:59:56 +0200
+Processing by UserController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/profile.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/user/profile.html.erb:2
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/user/profile.html.erb:2
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 15], ["record_type", "User"], ["name", "profile_img"], ["LIMIT", 1]]
+  ↳ app/views/user/profile.html.erb:2
+  Rendered user/profile.html.erb within layouts/application (Duration: 13.5ms | Allocations: 9902)
+  Rendered layout layouts/application.html.erb (Duration: 24.2ms | Allocations: 30698)
+Completed 200 OK in 27ms (Views: 25.4ms | ActiveRecord: 1.9ms | Allocations: 32317)
+
+
+Started GET "/my_profile" for ::1 at 2022-09-20 11:00:32 +0200
+Processing by UserController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering user/profile.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/user/profile.html.erb:2
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 15], ["record_type", "User"], ["name", "profile_img"], ["LIMIT", 1]]
+  ↳ app/views/user/profile.html.erb:2
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/views/user/profile.html.erb:3
+  Rendered user/profile.html.erb within layouts/application (Duration: 34.7ms | Allocations: 20088)
+  Rendered layout layouts/application.html.erb (Duration: 47.0ms | Allocations: 27779)
+Completed 200 OK in 49ms (Views: 47.4ms | ActiveRecord: 1.0ms | Allocations: 28545)
+
+
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2065c20e98e908cb4ea6bb6ef08f4749942c064f/eu.png" for ::1 at 2022-09-20 11:00:33 +0200
+Processing by ActiveStorage::Blobs::RedirectController#show as PNG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2065c20e98e908cb4ea6bb6ef08f4749942c064f", "filename"=>"eu"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: zcl9jrgp7parwufkus45kwo9xfrb (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbU5zT1dweVozQTNjR0Z5ZDNWbWEzVnpORFZyZDI4NWVHWnlZZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpTjJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1WMUxuQnVaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWlhVdWNHNW5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lPYVcxaFoyVXZjRzVuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0wOS0yMFQwOTowNTozMy4wMzRaIiwicHVyIjoiYmxvYl9rZXkifX0=--e3d4e4c5fcd9ce7f4b6fe667e68fb6b7005fc02f/eu.png)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbU5zT1dweVozQTNjR0Z5ZDNWbWEzVnpORFZyZDI4NWVHWnlZZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpTjJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1WMUxuQnVaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWlhVdWNHNW5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lPYVcxaFoyVXZjRzVuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0wOS0yMFQwOTowNTozMy4wMzRaIiwicHVyIjoiYmxvYl9rZXkifX0=--e3d4e4c5fcd9ce7f4b6fe667e68fb6b7005fc02f/eu.png
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms | Allocations: 2753)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbU5zT1dweVozQTNjR0Z5ZDNWbWEzVnpORFZyZDI4NWVHWnlZZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpTjJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1WMUxuQnVaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWlhVdWNHNW5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lPYVcxaFoyVXZjRzVuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0wOS0yMFQwOTowNTozMy4wMzRaIiwicHVyIjoiYmxvYl9rZXkifX0=--e3d4e4c5fcd9ce7f4b6fe667e68fb6b7005fc02f/eu.png" for ::1 at 2022-09-20 11:00:33 +0200
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"eu"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 323)
+
+
