@@ -5,3 +5,4 @@ class Post < ApplicationRecord
   has_many :likes, as: :likeable, dependent: :delete_all
 
   validates :image, :body, presence: true
+end
