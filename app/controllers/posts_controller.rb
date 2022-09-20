@@ -42,6 +42,7 @@ class PostsController < ApplicationController
   # DELETE /line_items/1.json
   def destroy
     @post = Post.find(params[:id])
+    @post.image.purge
     @post.destroy
     respond_to do |format|
       format.html { redirect_to root_path, notice: 'Post was successfully deleted.' }
