@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag("instagram.svg", size: "30x30", alt: "instagram_logo" ) %>
+    <% end %>
+        
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">       
+        <!-- Posibility to add new nav buttons -->
+      </ul>
+    <div class="d-flex">
+<% if user_signed_in? %>
+    <div class="nav-item">
+        <%= turbo_frame_tag "post-form" do %>
+            <%= link_to "New post", new_post_path, class: "nav-link" %>
+        <% end %>
+    </div>
+    <div class="nav-item">
+        <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
+    </div>
+<% else %>
+    <div class="nav-item">
+        <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
+    </div>
+<% end %>
+    </div>
+    </div>
+  </div>
+</nav>
+
+
+
