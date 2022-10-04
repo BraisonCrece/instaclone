@@ -159,3 +159,35 @@ button {
 .comment-form {
   margin-bottom: 5px;
 }
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.navbar {
+  background-color: #bdbdbd1c;
+  border-radius: 10px;
+}
+
+.navbar-brand {
+  margin-left: 10px;
+
+  padding-top: 12px;
+}
