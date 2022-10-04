@@ -1,26 +1,31 @@
-<h2>Log in</h2>
+  <%= image_tag("instagram.svg", class: "mb-4", alt: "Instagram Logo", width: "72", height:"57" ) %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<h2 class="h3 mb-3 fw-normal">Log in</h2>
+<div class="form-signin w-100 m-auto">
+  
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
+    
+    <div class="form-floating">    
+      <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control", id: "floatingInput", placeholder: "name@example.com" %>
+      <%= f.label :floatingPassword, "Email address" %>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+    <div class="form-floating">    
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control", id: "floatingPassword", placeholder: "Password" %>
+      <%= f.label :floatingPassword, "Password" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="checkbox mb-3">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+
+
+    <%= f.submit "Log in", class: "w-100 btn btn-lg btn-primary" %>
+    <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
+  <% end %>
+</div>
 
 <%= render "devise/shared/links" %>
