@@ -20,6 +20,7 @@ class PostsController < ApplicationController
 
     if @post.valid?
       @post.save
+      redirect_to root_path
     else
       render :new, status: :unprocessable_entity
     end

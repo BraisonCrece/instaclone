@@ -13,13 +13,14 @@
       </ul>
     <div class="d-flex">
 <% if user_signed_in? %>
-    <div class="nav-item">
-        <%= turbo_frame_tag "post-form" do %>
-            <%= link_to "New post", new_post_path, class: "nav-link" %>
-        <% end %>
+    <div class="nav-item">    
+      <%= turbo_frame_tag "post-turbo" do %>
+        <%= link_to "New post", new_post_path, class: "nav-link" %> 
+      <% end %>       
     </div>
+   
     <div class="nav-item">
-        <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
+      <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
     </div>
 <% else %>
     <div class="nav-item">

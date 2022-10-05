@@ -6,7 +6,7 @@
   <div class="post-body">
     <span><%= image_tag post.image, class: "image"%></span> 
   </div>
-  <% if current_user %>  
+  <% if user_signed_in? %>  
     <div class="post-actions">    
       <% if has_likes_on?(post) %>
         <%= turbo_frame_tag "post-like-#{post.id}" do %>

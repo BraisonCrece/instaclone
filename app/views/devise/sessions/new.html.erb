@@ -4,10 +4,11 @@
 <div class="form-signin w-100 m-auto">
   
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
     
     <div class="form-floating">    
       <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control", id: "floatingInput", placeholder: "name@example.com" %>
-      <%= f.label :floatingPassword, "Email address" %>
+      <%= f.label :floatingInput, "Email address" %>
     </div>
 
     <div class="form-floating">    
