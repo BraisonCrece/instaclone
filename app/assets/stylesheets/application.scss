@@ -92,6 +92,10 @@ body {
   border-bottom: 1px solid #ccc;
 }
 
+.comment {
+  display: flex;
+}
+
 
 
 .image{
@@ -116,12 +120,14 @@ body {
   background: url('like.png');
   background-size: contain;
   display: block;
+  clear: both;
 }
 
 .post-actions-unlike {
   background: url('liked.png');
   background-size: contain;
   display: block;
+  clear: both;
 }
 
 .post-actions, .post-description {
@@ -147,6 +153,8 @@ body {
 }
 
 .comment-text {
+  padding-top: 5px;
+  padding-left: 5px;
   display: block;
   clear: both;
 }
