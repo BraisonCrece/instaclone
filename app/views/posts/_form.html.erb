@@ -1,8 +1,10 @@
-comcom  <%= form_with model: @post do |f| %>
-    <div class="input-group">
-      <%= f.text_field :body, class: "form-control", placeholder: "Post description", 'aria-label': "Recipient's post body" %>
-      <%= f.file_field :image, class: "btn btn-outline-secondary" %>
-      <%= f.submit :send, class: "btn btn-outline-secondary" %>
-    </div>
-  <% end %>
-
+<%= form_with model: @post do |f| %>
+  <div class="input-group">
+    <%= f.text_field :body, class: "form-control", placeholder: "Post description", 'aria-label': "Recipient's post body" %>
+    <%= f.file_field :image, class: "btn btn-outline-secondary" %>
+    <%= f.submit :send, class: "btn btn-outline-secondary" %>
+  </div>
+<% end %>
+<div class="post-image">
+  <%= image_tag post.image, class: "image" %>
+</div>

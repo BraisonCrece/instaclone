@@ -4,8 +4,9 @@
     <div><%= post.user.username %></div>
   </div>
   <div class="post-body">
-    <span><%= image_tag post.image, class: "image"%></span> 
+    <span><%= image_tag post.image, class: "image" %></span> 
   </div>
+
   <% if user_signed_in? %>  
     <div class="post-actions">    
       <% if has_likes_on?(post) %>
@@ -20,6 +21,7 @@
       <div class="post-actions-comments" id="post<%=post.id%>-comments-count"><%= pluralize(post.comments.count, "comment") %></div>
     </div>
   <% end %>
+
   <div class="post-description">
     <b>Description: </b><%= post.body %>
   </div>  
