@@ -11,9 +11,15 @@
   </head>
 
   <body>
+    
     <%= render partial: "shared/nav-bar" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    
+    <% if notice or alert %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    <% end %>
+    
     <%= yield %>
+
   </body>
 </html>

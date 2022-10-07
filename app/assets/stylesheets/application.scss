@@ -103,6 +103,10 @@ body {
   justify-content: center;
 }
 
+#posts {
+  display: grid;
+  justify-items: center;
+}
 
 .image{
   height: 280px;
